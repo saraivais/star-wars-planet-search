@@ -32,13 +32,20 @@ function PlanetProvider({ children }) {
     setData(dataFromAPI);
   };
 
+  // const filterData = () => {
+  //   const nameMatch = new RegExp(filterByName.name, 'i');
+  //   return data.filter(({ name }) => name.test(nameMatch));
+  // };
+
   useEffect(() => {
     storePlanetData();
   }, []);
 
   useEffect(() => {
-    setFilteredPlanets(data);
-  }, [data]);
+    const nameMatch = new RegExp(filterByName.name);
+    const filteredData = data.filter(({ name }) => name.match(nameMatch));
+    setFilteredPlanets(filteredData);
+  }, [filterByName, data]);
 
   // console.log('filteredPlanets', filteredPlanets);
 
