@@ -6,7 +6,6 @@ function Dashboard() {
   const { nameFilter: { setFilterByName } } = useContext(PlanetContext);
 
   const handleInputChange = ({ target }) => {
-    // console.log('meu value é', target.value);
     setNameFilter(target.value);
   };
 
