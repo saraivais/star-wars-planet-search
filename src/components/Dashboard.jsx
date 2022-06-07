@@ -5,20 +5,45 @@ function Dashboard() {
   const INITIAL_NUMERIC_VALUES = {
     column: 'population',
     comparison: 'maior que',
-    value: 100000,
+    value: 0,
   };
+
+  const {
+    nameFilter: { setFilterByName },
+    numericFilter: { filterByNumericValues, setFilterByNumericValues },
+    allSelectOptions,
+  } = useContext(PlanetContext);
+
   const [nameFilter, setNameFilter] = useState('');
   const [numericFilter, setNumericFilter] = useState(INITIAL_NUMERIC_VALUES);
-  const { nameFilter: { setFilterByName } } = useContext(PlanetContext);
+  const [columnOptions, setColumnOptions] = useState(allSelectOptions);
+
+  const { column, comparison, value } = numericFilter;
 
   const handleNameInputChange = ({ target }) => {
     setNameFilter(target.value);
+  };
+
+  const handleAllThreeNumericFilterInputs = ({ target }) => {
+    const { name, value: inputValue } = target;
+    setNumericFilter((prevState) => ({ ...prevState, [name]: inputValue }));
+  };
+
+  const storeNumericFilter = () => {
+    setFilterByNumericValues((prevState) => ([...prevState, numericFilter]));
   };
 
   useEffect(() => {
     setFilterByName({ name: nameFilter });
   }, [nameFilter, setFilterByName]);
 
+  useEffect(() => {
+    setColumnOptions(allSelectOptions
+      .filter((selectOption) => filterByNumericValues
+        .every((filter) => selectOption !== filter.column)));
+  }, [filterByNumericValues, allSelectOptions]);
+
+  console.log(columnOptions);
   return (
     <div>
       <label htmlFor="name">
@@ -31,18 +56,36 @@ function Dashboard() {
           onChange={ handleNameInputChange }
         />
       </label>
-      <select name="column" data-testid="column-filter">
-        { /* population, orbital_period, diameter, rotation_period, surface_water */}
+      <select
+        name="column"
+        data-testid="column-filter"
+        value={ column }
+        onChange={ handleAllThreeNumericFilterInputs }
+      >
+        { columnOptions.map((columnOption, index) => (
+          <option key={ index } value={ columnOption }>{columnOption}</option>)) }
       </select>
-      <select name="comparison" data-testid="comparison-filter">
+      <select
+        name="comparison"
+        data-testid="comparison-filter"
+        value={ comparison }
+        onChange={ handleAllThreeNumericFilterInputs }
+      >
         <option value="maior que">maior que</option>
         <option value="menor que">menor que</option>
         <option value="igual a">igual a</option>
       </select>
-      <input name="value" data-testid="value-filter" type="number" />
+      <input
+        name="value"
+        data-testid="value-filter"
+        type="number"
+        value={ value }
+        onChange={ handleAllThreeNumericFilterInputs }
+      />
       <button
         type="button"
         data-testid="button-filter"
+        onClick={ storeNumericFilter }
       >
         Filtrar
 
