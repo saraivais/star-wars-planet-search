@@ -45,6 +45,23 @@ function PlanetProvider({ children }) {
     setFilteredPlanets(filteredData);
   }, [filterByName, data]);
 
+  // useEffect watching numeric Filters to change filteredPlanets~
+  useEffect(() => {
+    const planetsFilteredByNumber = filterByNumericValues.reduce((acc, curr) => {
+      switch (curr.comparison) {
+      case 'maior que':
+        return acc.filter((planet) => Number(planet[curr.column]) > Number(curr.value));
+      case 'menor que':
+        return acc.filter((planet) => Number(planet[curr.column]) < Number(curr.value));
+      case 'igual a':
+        return acc.filter((planet) => Number(planet[curr.column]) === Number(curr.value));
+      default:
+        return acc;
+      }
+    }, data);
+    setFilteredPlanets(planetsFilteredByNumber);
+  }, [filterByNumericValues, data]);
+
   return (
     <PlanetContext.Provider value={ PLANET_CONTEXT }>
       { children }
