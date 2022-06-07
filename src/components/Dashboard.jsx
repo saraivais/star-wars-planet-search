@@ -1,11 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import PlanetContext from '../context/PlanetContext';
 
 function Dashboard() {
   const [nameFilter, setNameFilter] = useState('');
+  const { nameFilter: { setFilterByName } } = useContext(PlanetContext);
 
   const handleInputChange = ({ target }) => {
     setNameFilter(target.value);
-  }
+  };
+
+  useEffect(() => {
+    if (nameFilter) {
+      console.log('rodei');
+      setFilterByName({ name: nameFilter });
+    }
+  }, [nameFilter, setFilterByName]);
 
   return (
     <div>
