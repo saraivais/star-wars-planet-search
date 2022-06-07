@@ -4,6 +4,8 @@ import PlanetContext from './PlanetContext';
 import getPlanetDataFromAPI from '../services/StarWarsAPI';
 
 function PlanetProvider({ children }) {
+  const allSelectOptions = [
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
   const [data, setData] = useState([]);
   const [filterByName, setFilterByName] = useState({});
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
@@ -14,11 +16,16 @@ function PlanetProvider({ children }) {
       filterByName,
       setFilterByName,
     },
+    numericFilter: {
+      filterByNumericValues,
+      setFilterByNumericValues,
+    },
     filteredPlanets,
     planetData: {
       data,
       setData,
     },
+    allSelectOptions,
   };
 
   const storePlanetData = async () => {
