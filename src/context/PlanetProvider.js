@@ -6,8 +6,10 @@ import getPlanetDataFromAPI from '../services/StarWarsAPI';
 function PlanetProvider({ children }) {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [filteredPlanets, setFilteredPlanets] = useState([]);
 
   const PLANET_CONTEXT = {
+    filteredPlanets,
     planetData: {
       data,
       setData,
@@ -26,6 +28,12 @@ function PlanetProvider({ children }) {
   useEffect(() => {
     storePlanetData();
   }, []);
+
+  useEffect(() => {
+    setFilteredPlanets(data);
+  }, [data]);
+
+  // console.log('filteredPlanets', filteredPlanets);
 
   return (
     <PlanetContext.Provider value={ PLANET_CONTEXT }>
