@@ -4,11 +4,8 @@ import PlanetContext from './PlanetContext';
 import getPlanetDataFromAPI from '../services/StarWarsAPI';
 
 function PlanetProvider({ children }) {
-  // const INITIAL_FILTERS = [{ filterByName: { name: '' } }];
-
   const [data, setData] = useState([]);
   const [filterByName, setFilterByName] = useState({});
-  // const [filters, setFilters] = useState([]);
   const [filteredPlanets, setFilteredPlanets] = useState([]);
 
   const PLANET_CONTEXT = {
@@ -21,21 +18,12 @@ function PlanetProvider({ children }) {
       data,
       setData,
     },
-    // myFilters: {
-    //   filters,
-    //   setFilters,
-    // },
   };
 
   const storePlanetData = async () => {
     const dataFromAPI = await getPlanetDataFromAPI();
     setData(dataFromAPI);
   };
-
-  // const filterData = () => {
-  //   const nameMatch = new RegExp(filterByName.name, 'i');
-  //   return data.filter(({ name }) => name.test(nameMatch));
-  // };
 
   useEffect(() => {
     storePlanetData();
@@ -46,8 +34,6 @@ function PlanetProvider({ children }) {
     const filteredData = data.filter(({ name }) => name.match(nameMatch));
     setFilteredPlanets(filteredData);
   }, [filterByName, data]);
-
-  // console.log('filteredPlanets', filteredPlanets);
 
   return (
     <PlanetContext.Provider value={ PLANET_CONTEXT }>
