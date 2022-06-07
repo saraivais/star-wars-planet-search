@@ -6,6 +6,7 @@ import getPlanetDataFromAPI from '../services/StarWarsAPI';
 function PlanetProvider({ children }) {
   const [data, setData] = useState([]);
   const [filterByName, setFilterByName] = useState({});
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredPlanets, setFilteredPlanets] = useState([]);
 
   const PLANET_CONTEXT = {
@@ -29,8 +30,10 @@ function PlanetProvider({ children }) {
     storePlanetData();
   }, []);
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+
   useEffect(() => {
-    const nameMatch = new RegExp(filterByName.name);
+    const nameMatch = new RegExp(filterByName.name, 'i');
     const filteredData = data.filter(({ name }) => name.match(nameMatch));
     setFilteredPlanets(filteredData);
   }, [filterByName, data]);
