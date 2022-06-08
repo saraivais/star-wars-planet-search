@@ -59,7 +59,6 @@ function Dashboard() {
         .every((filter) => selectOption !== filter.column)));
   }, [filterByNumericValues, allSelectOptions]);
 
-  // console.log(columnOptions);
   return (
     <div>
       <label htmlFor="name">
