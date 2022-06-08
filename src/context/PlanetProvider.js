@@ -33,19 +33,19 @@ function PlanetProvider({ children }) {
     allSelectOptions,
   };
 
+  const sortAlphabetically = (a, b) => {
+    const minusOne = -1;
+    if (a > b) return 1;
+    if (a < b) return minusOne;
+    return 0;
+  };
+
   const compareNumbersAscending = (a, b) => {
     const minusOne = -1;
     if (a === 'unknown') return 1;
     if (b === 'unknown') return minusOne;
     if (Number(a) > Number(b)) return 1;
     if (Number(a) < Number(b)) return minusOne;
-    return 0;
-  };
-
-  const sortAlphabetically = (a, b) => {
-    const minusOne = -1;
-    if (a > b) return 1;
-    if (a < b) return minusOne;
     return 0;
   };
 
@@ -68,14 +68,13 @@ function PlanetProvider({ children }) {
   }, []);
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-
   useEffect(() => {
     const nameMatch = new RegExp(filterByName.name, 'i');
     const filteredData = data.filter(({ name }) => name.match(nameMatch));
     setFilteredPlanets(filteredData);
   }, [filterByName, data]);
 
-  // useEffect watching numeric Filters to change filteredPlanets~
+  // useEffect watching numericFiltersArray to change filteredPlanets~
   useEffect(() => {
     const planetsFilteredByNumber = filterByNumericValues.reduce((acc, curr) => {
       switch (curr.comparison) {
@@ -92,6 +91,7 @@ function PlanetProvider({ children }) {
     setFilteredPlanets(planetsFilteredByNumber);
   }, [filterByNumericValues, data]);
 
+  // useEffect watching sortingOrder object to sort filteredPlantes~
   useEffect(() => {
     switch (sortingOrder.sort) {
     case 'ASC':
