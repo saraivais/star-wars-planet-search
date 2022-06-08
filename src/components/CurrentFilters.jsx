@@ -25,7 +25,7 @@ function CurrentFilters() {
     <section>
       <h2>Filtros existentes:</h2>
       <hr />
-      { filterByNumericValues.length && filterByNumericValues
+      { filterByNumericValues.length !== 0 && filterByNumericValues
         .map(({ column, comparison, value }, index) => (
           <div key={ index } data-testid="filter">
             {`${column} ${comparison} ${value}`}
