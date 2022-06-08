@@ -40,23 +40,23 @@ function PlanetProvider({ children }) {
     return 0;
   };
 
-  const compareNumbersAscending = (a, b) => {
+  const compareNumbers = (a, b, multiplier = 1) => {
     const minusOne = -1;
-    if (a === 'unknown') return 1;
-    if (b === 'unknown') return minusOne;
+    if (a === 'unknown') return 1 * multiplier;
+    if (b === 'unknown') return minusOne * multiplier;
     if (Number(a) > Number(b)) return 1;
     if (Number(a) < Number(b)) return minusOne;
     return 0;
   };
 
-  const compareNumbersDescending = (a, b) => {
-    const minusOne = -1;
-    if (a === 'unknown') return 1;
-    if (b === 'unknown') return minusOne;
-    if (Number(a) < Number(b)) return 1;
-    if (Number(a) > Number(b)) return minusOne;
-    return 0;
-  };
+  // const compareNumbersDescending = (a, b) => {
+  //   const minusOne = -1;
+  //   if (a === 'unknown') return 1;
+  //   if (b === 'unknown') return minusOne;
+  //   if (Number(a) < Number(b)) return 1;
+  //   if (Number(a) > Number(b)) return minusOne;
+  //   return 0;
+  // };
 
   useEffect(() => {
     const storePlanetData = async () => {
@@ -93,21 +93,22 @@ function PlanetProvider({ children }) {
 
   // useEffect watching sortingOrder object to sort filteredPlantes~
   useEffect(() => {
+    const reverseOrderMultiplier = -1;
     switch (sortingOrder.sort) {
     case 'ASC':
       setFilteredPlanets((prevState) => [...prevState]
-        .sort((a, b) => compareNumbersAscending(
+        .sort((a, b) => compareNumbers(
           a[sortingOrder.column], b[sortingOrder.column],
         )));
       break;
     case 'DSC':
       setFilteredPlanets((prevState) => [...prevState]
-        .sort((a, b) => compareNumbersDescending(
-          a[sortingOrder.column], b[sortingOrder.column],
+        .sort((a, b) => compareNumbers(
+          b[sortingOrder.column], a[sortingOrder.column], reverseOrderMultiplier,
         )));
       break;
     default:
-      break;
+      return 0;
     }
   }, [sortingOrder]);
 
