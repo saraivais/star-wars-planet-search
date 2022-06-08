@@ -4,11 +4,7 @@ import TableRow from './TableRow';
 
 function Table() {
   const { filteredPlanets } = useContext(PlanetContext);
-  // console.log(data);
   const isDataEmpty = filteredPlanets.length === 0;
-  // console.log(isDataEmpty);
-  // console.log(Object.keys(data[0]));
-
   return (
     <table>
       <thead>
