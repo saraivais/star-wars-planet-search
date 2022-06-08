@@ -49,15 +49,6 @@ function PlanetProvider({ children }) {
     return 0;
   };
 
-  // const compareNumbersDescending = (a, b) => {
-  //   const minusOne = -1;
-  //   if (a === 'unknown') return 1;
-  //   if (b === 'unknown') return minusOne;
-  //   if (Number(a) < Number(b)) return 1;
-  //   if (Number(a) > Number(b)) return minusOne;
-  //   return 0;
-  // };
-
   useEffect(() => {
     const storePlanetData = async () => {
       const dataFromAPI = await getPlanetDataFromAPI();
