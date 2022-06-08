@@ -8,15 +8,22 @@ function Dashboard() {
     value: 0,
   };
 
+  const INITIAL_SORTING_VALUES = {
+    column: 'population',
+    sort: 'ASC',
+  };
+
   const {
     nameFilter: { setFilterByName },
     numericFilter: { filterByNumericValues, setFilterByNumericValues },
     allSelectOptions,
+    sortingOrderFilter: { setSortingOrder },
   } = useContext(PlanetContext);
 
   const [nameFilter, setNameFilter] = useState('');
   const [numericFilter, setNumericFilter] = useState(INITIAL_NUMERIC_VALUES);
   const [columnOptions, setColumnOptions] = useState(allSelectOptions);
+  const [sortingFilter, setSortingFilter] = useState(INITIAL_SORTING_VALUES);
 
   const { column, comparison, value } = numericFilter;
 
@@ -31,6 +38,15 @@ function Dashboard() {
 
   const storeNumericFilter = () => {
     setFilterByNumericValues((prevState) => ([...prevState, numericFilter]));
+  };
+
+  const handleSortingOrderInputs = ({ target }) => {
+    const { name, value: sortInputValue } = target;
+    setSortingFilter((prevState) => ({ ...prevState, [name]: sortInputValue }));
+  };
+
+  const storeSortingFilter = () => {
+    setSortingOrder(sortingFilter);
   };
 
   useEffect(() => {
@@ -88,6 +104,52 @@ function Dashboard() {
         onClick={ storeNumericFilter }
       >
         Filtrar
+
+      </button>
+      <hr />
+      <label htmlFor="column-sort">
+        Coluna:
+        <select
+          data-testid="column-sort"
+          name="column"
+          id="column-sort"
+          value={ sortingFilter.column }
+          onChange={ handleSortingOrderInputs }
+        >
+          {allSelectOptions.map((columnOptionForSort) => (
+            <option key={ columnOptionForSort } value={ columnOptionForSort }>
+              { columnOptionForSort }
+            </option>))}
+        </select>
+      </label>
+      <label htmlFor="sort-asc">
+        ASC
+        <input
+          data-testid="column-sort-input-asc"
+          id="sort-asc"
+          value="ASC"
+          name="sort"
+          type="radio"
+          onChange={ handleSortingOrderInputs }
+        />
+      </label>
+      <label htmlFor="sort-dsc">
+        DSC
+        <input
+          data-testid="column-sort-input-desc"
+          id="sort-dsc"
+          value="DSC"
+          name="sort"
+          type="radio"
+          onChange={ handleSortingOrderInputs }
+        />
+      </label>
+      <button
+        data-testid="column-sort-button"
+        type="button"
+        onClick={ storeSortingFilter }
+      >
+        Ordenar
 
       </button>
     </div>
