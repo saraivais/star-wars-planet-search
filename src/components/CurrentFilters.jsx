@@ -16,8 +16,6 @@ function CurrentFilters() {
   const removeSelectedFilter = ({ target }) => {
     const { id } = target;
     const newFilters = filterByNumericValues.filter((filter) => filter.column !== id);
-    // console.log('newFilters', newFilters);
-    // console.log('filterByNumericValues', filterByNumericValues);
     setFilterByNumericValues(newFilters);
   };
 
