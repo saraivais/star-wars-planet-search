@@ -10,6 +10,7 @@ function PlanetProvider({ children }) {
   const [filterByName, setFilterByName] = useState({});
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [sortingOrder, setSortingOrder] = useState({});
 
   const PLANET_CONTEXT = {
     nameFilter: {
@@ -25,15 +26,44 @@ function PlanetProvider({ children }) {
       data,
       setData,
     },
+    sortingOrderFilter: {
+      sortingOrder,
+      setSortingOrder,
+    },
     allSelectOptions,
   };
 
-  const storePlanetData = async () => {
-    const dataFromAPI = await getPlanetDataFromAPI();
-    setData(dataFromAPI);
+  const compareNumbersAscending = (a, b) => {
+    const minusOne = -1;
+    if (a === 'unknown') return 1;
+    if (b === 'unknown') return minusOne;
+    if (Number(a) > Number(b)) return 1;
+    if (Number(a) < Number(b)) return minusOne;
+    return 0;
+  };
+
+  const sortAlphabetically = (a, b) => {
+    const minusOne = -1;
+    if (a > b) return 1;
+    if (a < b) return minusOne;
+    return 0;
+  };
+
+  const compareNumbersDescending = (a, b) => {
+    const minusOne = -1;
+    if (a === 'unknown') return 1;
+    if (b === 'unknown') return minusOne;
+    if (Number(a) < Number(b)) return 1;
+    if (Number(a) > Number(b)) return minusOne;
+    return 0;
   };
 
   useEffect(() => {
+    const storePlanetData = async () => {
+      const dataFromAPI = await getPlanetDataFromAPI();
+      setData([...dataFromAPI]
+        .sort((a, b) => sortAlphabetically(a.name, b.name)));
+    };
     storePlanetData();
   }, []);
 
@@ -61,6 +91,25 @@ function PlanetProvider({ children }) {
     }, data);
     setFilteredPlanets(planetsFilteredByNumber);
   }, [filterByNumericValues, data]);
+
+  useEffect(() => {
+    switch (sortingOrder.sort) {
+    case 'ASC':
+      setFilteredPlanets((prevState) => [...prevState]
+        .sort((a, b) => compareNumbersAscending(
+          a[sortingOrder.column], b[sortingOrder.column],
+        )));
+      break;
+    case 'DSC':
+      setFilteredPlanets((prevState) => [...prevState]
+        .sort((a, b) => compareNumbersDescending(
+          a[sortingOrder.column], b[sortingOrder.column],
+        )));
+      break;
+    default:
+      break;
+    }
+  }, [sortingOrder]);
 
   return (
     <PlanetContext.Provider value={ PLANET_CONTEXT }>
