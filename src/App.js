@@ -1,19 +1,29 @@
-import React from 'react';
-// import PlanetContext from './context/MyContext';
+import React, { useContext } from 'react';
+import PlanetContext from './context/PlanetContext';
 import './App.css';
-import PlanetProvider from './context/PlanetProvider';
 import Table from './components/Table';
 import Dashboard from './components/Dashboard';
 import CurrentFilters from './components/CurrentFilters';
+import Loading from './components/Loading';
 
 function App() {
+  const { loading } = useContext(PlanetContext);
   return (
-    <PlanetProvider>
-      <span>Hello, Emperor!</span>
+    <>
+      { loading
+        ? <Loading />
+        : (
+          <>
+            <Dashboard />
+            <CurrentFilters />
+            <Table />
+          </>
+        )}
+      {/* <Loading />
       <Dashboard />
       <CurrentFilters />
-      <Table />
-    </PlanetProvider>
+      <Table /> */}
+    </>
   );
 }
 
