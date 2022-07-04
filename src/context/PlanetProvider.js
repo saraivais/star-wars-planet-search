@@ -11,8 +11,10 @@ function PlanetProvider({ children }) {
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredPlanets, setFilteredPlanets] = useState([]);
   const [sortingOrder, setSortingOrder] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const PLANET_CONTEXT = {
+    loading,
     nameFilter: {
       filterByName,
       setFilterByName,
@@ -54,6 +56,7 @@ function PlanetProvider({ children }) {
       const dataFromAPI = await getPlanetDataFromAPI();
       setData([...dataFromAPI]
         .sort((a, b) => sortAlphabetically(a.name, b.name)));
+      setLoading(false);
     };
     storePlanetData();
   }, []);
@@ -69,11 +72,11 @@ function PlanetProvider({ children }) {
   useEffect(() => {
     const planetsFilteredByNumber = filterByNumericValues.reduce((acc, curr) => {
       switch (curr.comparison) {
-      case 'maior que':
+      case 'greater than':
         return acc.filter((planet) => Number(planet[curr.column]) > Number(curr.value));
-      case 'menor que':
+      case 'less than':
         return acc.filter((planet) => Number(planet[curr.column]) < Number(curr.value));
-      case 'igual a':
+      case 'equal to':
         return acc.filter((planet) => Number(planet[curr.column]) === Number(curr.value));
       default:
         return acc;
