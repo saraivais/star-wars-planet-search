@@ -4,7 +4,7 @@ import PlanetContext from '../context/PlanetContext';
 function Dashboard() {
   const INITIAL_NUMERIC_VALUES = {
     column: 'population',
-    comparison: 'maior que',
+    comparison: 'greater than',
     value: 0,
   };
 
@@ -86,9 +86,9 @@ function Dashboard() {
         value={ comparison }
         onChange={ handleAllThreeNumericFilterInputs }
       >
-        <option value="maior que">maior que</option>
-        <option value="menor que">menor que</option>
-        <option value="igual a">igual a</option>
+        <option value="greater than">greater than</option>
+        <option value="less than">less than</option>
+        <option value="equal to">equal to</option>
       </select>
       <input
         name="value"
@@ -102,12 +102,12 @@ function Dashboard() {
         data-testid="button-filter"
         onClick={ storeNumericFilter }
       >
-        Filtrar
+        Filter
 
       </button>
       <hr />
       <label htmlFor="column-sort">
-        Coluna:
+        Column:
         <select
           data-testid="column-sort"
           name="column"
@@ -148,7 +148,7 @@ function Dashboard() {
         type="button"
         onClick={ storeSortingFilter }
       >
-        Ordenar
+        Sort
 
       </button>
     </div>
