@@ -28,10 +28,23 @@ function TableRow(planetObject) {
       <td>{ terrain }</td>
       <td>{ surfaceWater }</td>
       <td>{ population }</td>
-      <td>{ films }</td>
+      <td>
+        { films.length && films
+          .map((linkAdress, index) => (
+            <a
+              key={ index }
+              href={ linkAdress }
+              target="_blank"
+              rel="noreferrer"
+            >
+              { linkAdress }
+            </a>)) }
+      </td>
       <td>{ created }</td>
       <td>{ edited }</td>
-      <td>{ url }</td>
+      <td>
+        <a href={ url } target="blank">{ url }</a>
+      </td>
     </tr>
   );
 }
