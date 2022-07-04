@@ -1,4 +1,5 @@
-const APIURL = 'https://swapi-trybe.herokuapp.com/api/planets/';
+const APIURL = 'https://swapi.dev/api/planets/';
+// https://swapi.dev/documentation#planets
 
 const getPlanetDataFromAPI = async () => {
   const APIResponse = await fetch(APIURL);

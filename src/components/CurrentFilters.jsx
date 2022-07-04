@@ -21,7 +21,7 @@ function CurrentFilters() {
 
   return (
     <section>
-      <h2>Filtros existentes:</h2>
+      <h2>Current Filters:</h2>
       <hr />
       { filterByNumericValues.length !== 0 && filterByNumericValues
         .map(({ column, comparison, value }, index) => (
@@ -41,7 +41,7 @@ function CurrentFilters() {
         data-testid="button-remove-filters"
         onClick={ removeAllFilters }
       >
-        Remover todas filtragens
+        Remove all filters
 
       </button>
     </section>
