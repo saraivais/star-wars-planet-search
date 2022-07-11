@@ -12,7 +12,7 @@ function Table() {
           { !isDataEmpty && Object.keys(filteredPlanets[0])
             .filter((category) => category !== 'residents')
             .map((category) => (
-              <th key={ category }>{ category }</th>
+              <th className="font-mono" key={ category }>{ category }</th>
             ))}
         </tr>
       </thead>

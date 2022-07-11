@@ -60,8 +60,8 @@ function Dashboard() {
   }, [filterByNumericValues, allSelectOptions]);
 
   return (
-    <div>
-      <label htmlFor="name">
+    <div className="bg-dark-blue">
+      <label htmlFor="name" className="font-mono text-lg">
         Planet Name:
         <input
           data-testid="name-filter"
