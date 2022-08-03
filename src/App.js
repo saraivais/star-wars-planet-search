@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import PlanetContext from './context/PlanetContext';
-import './App.css';
-import Table from './components/Table';
-import Dashboard from './components/Dashboard';
-import CurrentFilters from './components/CurrentFilters';
-import Loading from './components/Loading';
+import Table from './Table/Table';
+import Dashboard from './Dashboard/Dashboard';
+import FilterList from './FilterList/FilterList';
+import Loading from './Loading/Loading';
 
 function App() {
   const { loading } = useContext(PlanetContext);
@@ -15,13 +14,13 @@ function App() {
         : (
           <>
             <Dashboard />
-            <CurrentFilters />
+            <FilterList />
             <Table />
           </>
         )}
       {/* <Loading />
       <Dashboard />
-      <CurrentFilters />
+      <FilterList />
       <Table /> */}
     </>
   );
