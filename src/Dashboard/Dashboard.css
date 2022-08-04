@@ -1,11 +1,12 @@
 .dashboard-container {
-  background-color: #222a31;
+  background-color: rgba(34, 42, 49, 0.7);
+  border: 1.5px solid white;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   height: 120px;
   justify-content: space-evenly;
-  margin: auto;
+  margin: 5px auto;
   padding: 10px;
   width: 80%;
 }
