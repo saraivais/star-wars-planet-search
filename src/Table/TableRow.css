@@ -1,0 +1,15 @@
+.table-row {
+  background-color: rgb(230, 224, 230, 0.4);
+}
+
+.table-row td {
+  font-family: Rokkitt , serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.link-address {
+  color: #222a31;
+  display: block;
+}
