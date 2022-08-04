@@ -61,88 +61,100 @@ function Dashboard() {
   }, [filterByNumericValues, allSelectOptions]);
 
   return (
-    <div>
-      <label htmlFor="name">
-        Planet Name:
-        <input
-          id="name"
-          type="text"
-          value={ nameFilter }
-          onChange={ handleNameInputChange }
-        />
-      </label>
-      <select
-        name="column"
-        value={ column }
-        onChange={ handleAllThreeNumericFilterInputs }
-      >
-        { columnOptions.map((columnOption, index) => (
-          <option key={ index } value={ columnOption }>{columnOption}</option>)) }
-      </select>
-      <select
-        name="comparison"
-        value={ comparison }
-        onChange={ handleAllThreeNumericFilterInputs }
-      >
-        <option value="greater than">greater than</option>
-        <option value="less than">less than</option>
-        <option value="equal to">equal to</option>
-      </select>
-      <input
-        name="value"
-        type="number"
-        value={ value }
-        onChange={ handleAllThreeNumericFilterInputs }
-      />
-      <button
-        type="button"
-        onClick={ storeNumericFilter }
-      >
-        Filter
-
-      </button>
-      <hr />
-      <label htmlFor="column-sort">
-        Column:
+    <div className="dashboard-container">
+      <div className="dashboard-top">
+        <label htmlFor="name">
+          <input
+            className="search-input"
+            id="name"
+            type="text"
+            value={ nameFilter }
+            onChange={ handleNameInputChange }
+            placeholder="Search planets by name"
+          />
+        </label>
         <select
+          className="search-input"
           name="column"
-          id="column-sort"
-          value={ sortingFilter.column }
-          onChange={ handleSortingOrderInputs }
+          value={ column }
+          onChange={ handleAllThreeNumericFilterInputs }
         >
-          {allSelectOptions.map((columnOptionForSort) => (
-            <option key={ columnOptionForSort } value={ columnOptionForSort }>
-              { columnOptionForSort }
-            </option>))}
+          { columnOptions.map((columnOption, index) => (
+            <option key={ index } value={ columnOption }>{columnOption}</option>)) }
         </select>
-      </label>
-      <label htmlFor="sort-asc">
-        ASC
+        <select
+          className="search-input"
+          name="comparison"
+          value={ comparison }
+          onChange={ handleAllThreeNumericFilterInputs }
+        >
+          <option value="greater than">greater than</option>
+          <option value="less than">less than</option>
+          <option value="equal to">equal to</option>
+        </select>
         <input
-          id="sort-asc"
-          value="ASC"
-          name="sort"
-          type="radio"
-          onChange={ handleSortingOrderInputs }
+          className="search-input"
+          name="value"
+          type="number"
+          value={ value }
+          onChange={ handleAllThreeNumericFilterInputs }
         />
-      </label>
-      <label htmlFor="sort-dsc">
-        DSC
-        <input
-          id="sort-dsc"
-          value="DSC"
-          name="sort"
-          type="radio"
-          onChange={ handleSortingOrderInputs }
-        />
-      </label>
-      <button
-        type="button"
-        onClick={ storeSortingFilter }
-      >
-        Sort
+        <button
+          type="button"
+          onClick={ storeNumericFilter }
+          className="filter-btn"
+        >
+          Filter
 
-      </button>
+        </button>
+      </div>
+      <div className="dashboard-bottom">
+        <label className="column-select-label" htmlFor="column-sort">
+          Sort by
+          <select
+            className="column-select"
+            name="column"
+            id="column-sort"
+            value={ sortingFilter.column }
+            onChange={ handleSortingOrderInputs }
+          >
+            {allSelectOptions.map((columnOptionForSort) => (
+              <option key={ columnOptionForSort } value={ columnOptionForSort }>
+                { columnOptionForSort }
+              </option>))}
+          </select>
+        </label>
+        <label className="radio-btn-label" htmlFor="sort-asc">
+          ASC
+          <input
+            className="radio-btn-sort"
+            id="sort-asc"
+            value="ASC"
+            name="sort"
+            type="radio"
+            onChange={ handleSortingOrderInputs }
+          />
+        </label>
+        <label className="radio-btn-label" htmlFor="sort-dsc">
+          DSC
+          <input
+            className="radio-btn-sort"
+            id="sort-dsc"
+            value="DSC"
+            name="sort"
+            type="radio"
+            onChange={ handleSortingOrderInputs }
+          />
+        </label>
+        <button
+          className="sort-btn"
+          type="button"
+          onClick={ storeSortingFilter }
+        >
+          Sort
+
+        </button>
+      </div>
     </div>
   );
 }
