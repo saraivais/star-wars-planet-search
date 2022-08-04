@@ -19,8 +19,8 @@ function TableRow(planetObject) {
   } } = planetObject;
 
   return (
-    <tr>
-      <td data-testid="planet-name">{ name }</td>
+    <tr className="table-row">
+      <td>{ name }</td>
       <td>{ rotationPeriod }</td>
       <td>{ orbitalPeriod }</td>
       <td>{ diameter }</td>
@@ -37,6 +37,7 @@ function TableRow(planetObject) {
               href={ linkAdress }
               target="_blank"
               rel="noreferrer"
+              className="link-address"
             >
               { linkAdress }
             </a>)) }
@@ -44,7 +45,7 @@ function TableRow(planetObject) {
       <td>{ created }</td>
       <td>{ edited }</td>
       <td>
-        <a href={ url } target="blank">{ url }</a>
+        <a className="link-address" href={ url } target="blank">{ url }</a>
       </td>
     </tr>
   );
