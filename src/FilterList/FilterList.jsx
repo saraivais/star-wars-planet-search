@@ -21,23 +21,26 @@ function CurrentFilters() {
   };
 
   return (
-    <section>
-      <h2>Current Filters:</h2>
-      <hr />
-      { filterByNumericValues.length !== 0 && filterByNumericValues
-        .map(({ column, comparison, value }, index) => (
-          <div key={ index } data-testid="filter">
-            {`${column} ${comparison} ${value}`}
-            <button
-              type="button"
-              id={ column }
-              onClick={ removeSelectedFilter }
-            >
-              X
+    <section className="filter-section">
+      <h2 className="filters-title">Current Filters:</h2>
+      <div className="filters-container">
+        { filterByNumericValues.length !== 0 && filterByNumericValues
+          .map(({ column, comparison, value }, index) => (
+            <div className="applied-filter" key={ index } data-testid="filter">
+              <p className="filter-name">{`${column} ${comparison} ${value}`}</p>
+              <button
+                className="remove-one-filter"
+                type="button"
+                id={ column }
+                onClick={ removeSelectedFilter }
+              >
+                X
 
-            </button>
-          </div>))}
+              </button>
+            </div>))}
+      </div>
       <button
+        className="clear-filters-btn"
         type="button"
         data-testid="button-remove-filters"
         onClick={ removeAllFilters }
