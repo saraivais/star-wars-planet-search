@@ -1,10 +1,9 @@
 .header {
   align-items: center;
-  background-image: url('../images/black-galaxy.jpg');
-  background-size: cover;
   display: flex;
   height: 90px;
   justify-content: center;
+  width: 100vw;
 }
 
 .header-title {
