@@ -1,10 +1,13 @@
 .dashboard-container {
   background-color: #222a31;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 120px;
   justify-content: space-evenly;
-  width: 100vw;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
 }
 
 .dashboard-top {
