@@ -1,0 +1,51 @@
+.filter-section {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.filters-title {
+  align-self: flex-start;
+  color: #f7dc07;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.6);
+  font-family: Squada One , cursive;
+  font-size: 2.2em;
+  text-transform: uppercase;
+}
+
+.filters-container {
+  display: flex;
+}
+
+.applied-filter {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  display: flex;
+  margin: 0 3px;
+  padding: 4px;
+}
+
+.filter-name {
+  font-family: Rokkitt , serif;
+}
+
+.remove-one-filter {
+  border: none;
+  border-radius: 50%;
+  font-family: Rokkitt , serif;
+  font-weight: 600;
+  margin: 0 3px;
+  padding: 2px;
+  width: 25px;
+}
+
+.clear-filters-btn {
+  background-color: #e6e0e6;
+  border: none;
+  border-radius: 8px;
+  font-family: Squada One , cursive;
+  margin: 0 10px;
+  padding: 8px;
+}

@@ -1,0 +1,27 @@
+.header {
+  align-items: center;
+  display: flex;
+  height: 90px;
+  justify-content: center;
+  width: 100vw;
+}
+
+.header-title {
+  color: #f7dc07;
+  font-family: Squada One , cursive;
+  font-size: 4em;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+}
+
+.header-logo {
+  height: 68px;
+  margin-right: 1.2em;
+}
+
+/*
+#121212
+#f7dc07
+#e6e0e6
+#222a31
+*/

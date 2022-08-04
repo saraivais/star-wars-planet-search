@@ -1,28 +1,26 @@
 import React, { useContext } from 'react';
 import PlanetContext from './context/PlanetContext';
+import Table from './Table/Table';
+import Dashboard from './Dashboard/Dashboard';
+import FilterList from './FilterList/FilterList';
+import Loading from './Loading/Loading';
+import Header from './Header/Header';
 import './App.css';
-import Table from './components/Table';
-import Dashboard from './components/Dashboard';
-import CurrentFilters from './components/CurrentFilters';
-import Loading from './components/Loading';
 
 function App() {
   const { loading } = useContext(PlanetContext);
   return (
     <>
+      <Header />
       { loading
         ? <Loading />
         : (
           <>
             <Dashboard />
-            <CurrentFilters />
+            <FilterList />
             <Table />
           </>
         )}
-      {/* <Loading />
-      <Dashboard />
-      <CurrentFilters />
-      <Table /> */}
     </>
   );
 }

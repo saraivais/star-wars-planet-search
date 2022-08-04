@@ -1,6 +1,6 @@
 import React from 'react';
 import lsObiwan from '../images/lsObiwan.png';
-import '../style/Loading.css';
+import './Loading.css';
 
 function Loading() {
   return (
