@@ -5,6 +5,7 @@ import Dashboard from './Dashboard/Dashboard';
 import FilterList from './FilterList/FilterList';
 import Loading from './Loading/Loading';
 import Header from './Header/Header';
+import './App.css';
 
 function App() {
   const { loading } = useContext(PlanetContext);
