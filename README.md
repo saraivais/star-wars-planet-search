@@ -1,16 +1,78 @@
-# 🌑 STAR WARS PLANETS 🪐
-## README em construção
+# STAR WARS PLANET SEARCH 🪐
 
-## English
+## English 🇬🇧
 <details>
   <summary>Click to expand!</summary>
   
-  ## Heading
+  ### Description
+
+This project was my first contact with React using Hooks and Context API as State Management. During it's development, I was able to solidify my knowledge of inheritance inbetween React components to create a Context Provider and React Hooks like useState and useEffect.
+
+### Technologies and Tools
+This project was developed using React, React Hooks, Context API and CSS.
+The data used in this project comes from [SWAPI](https://swapi.dev/).
+
+### Installation
+
+1. Create a directory using the **mkdir** command:
+```
+  mkdir saraivais-projects
+```
+
+2. Access the directory using the **cd** command and clone the repository:
+```
+  cd saraivais-projects
+  git clone git@github.com:saraivais/star-wars-planet-search.git
+```
+
+3. Access the project directory and install it's dependencies:
+```
+  cd star-wars-planet-search
+  npm i
+```
+
+4. Lastly, use the **npm start** command and access the project via browser, using the following url
+```
+  http://localhost:3000
+```
+
 </details>
 
-## Português
+## Português 🇧🇷
 <details>
   <summary>Clique para expandir!</summary>
   
-  ## Heading
+  ### Descrição
+
+Este projeto foi meu primeiro contato com React usando Hooks e Context API como State Management. Durante seu desenvolvimento, pude solidificar meu conhecimento sobre herança entre componentes React para criar um Context Provider e React Hooks como useState e useEffect.
+
+### Tecnologias e Ferramentas
+Este projeto foi desenvolvido utilizando React, React Hooks, Context API e CSS. Os dados utilizados no projeto são da [SWAPI](https://swapi.dev/).
+
+### Instalação
+
+1. Crie um diretório usando o comando **mkdir**:
+```
+  mkdir saraivais-projects
+```
+
+2. Acesse o diretório usando o comando **cd** e clone o repositório:
+```
+  cd saraivais-projects
+  git clone git@github.com:saraivais/star-wars-planet-search.git
+```
+
+3. Acesse o diretório do projeto e instale suas dependências:
+```
+  cd star-wars-planet-search
+  npm i
+```
+
+4. Por fim, use o comando **npm start** e acesse o projeto via navegador, usando a seguinte url
+```
+  http://localhost:3000
+```
+
 </details>
+
+
