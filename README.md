@@ -1,4 +1,4 @@
-# STAR WARS PLANET SEARCH 🪐
+<h1 align="center">STAR WARS PLANET SEARCH 🪐</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/96205316/182970742-f49b7caf-2155-440b-8148-82aa3beb1b35.png" alt="project-screenshot" width="750"/>
