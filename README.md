@@ -11,6 +11,7 @@
   
   ### Description
 
+Star Wars Planet Search was developed during the Front-end module at [Trybe](https://www.betrybe.com/) in June, 2022.   
 This project was my first contact with React using Hooks and Context API as State Management. During it's development, I was able to solidify my knowledge of inheritance inbetween React components to create a Context Provider and React Hooks like useState and useEffect.
 
 ### Technologies and Tools
@@ -48,7 +49,8 @@ The data used in this project comes from [SWAPI](https://swapi.dev/).
   <summary>Clique para expandir!</summary>
   
   ### Descrição
-
+  
+O Star Wars Planet Search foi desenvolvido durante o módulo Front-end em [Trybe](https://www.betrybe.com/) em junho de 2022.   
 Este projeto foi meu primeiro contato com React usando Hooks e Context API como State Management. Durante seu desenvolvimento, pude solidificar meu conhecimento sobre herança entre componentes React para criar um Context Provider e React Hooks como useState e useEffect.
 
 ### Tecnologias e Ferramentas
